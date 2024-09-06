@@ -1,6 +1,7 @@
 <?php
 
-use Error;
+namespace Oilytortoise\LaravelSimpleDto;
+
 use Livewire\Wireable;
 use ReflectionClass;
 use ReflectionProperty;

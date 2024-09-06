@@ -1,7 +1,8 @@
 <?php
 
+namespace Oilytortoise\LaravelSimpleDto;
+
 use Illuminate\Support\Collection;
-use ReflectionClass;
 
 /**
  * An object for storing a collection of DTOs.
