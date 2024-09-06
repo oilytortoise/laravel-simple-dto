@@ -1,0 +1,19 @@
+{
+    "name": "oilytortoise/laravel-simple-dto",
+    "description": "A simple DTO package for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Oilytortoise\\LaravelSimpleDto\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "oilytortoise",
+            "email": "152834130+oilytortoise@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
