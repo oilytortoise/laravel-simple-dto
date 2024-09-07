@@ -41,6 +41,8 @@ class UserDto extends AbstractDto
  You can create a new instance of the DTO as follows:  
  `$user = new UserDto(['name' => 'Oily Tortoise', 'email' => 'oily@tortoise.com']);`
 
+ **NOTE:** This package does not support union type properties *yet* e.g. `public string|int $unionProperty;` would not work and I recommend simply not type-hinting those properties for now. I am intending to introduce support for union types soon...
+
  You can also store other DTOs as properties:
   ```
 <?php
@@ -122,5 +124,5 @@ public function get(Model $model, string $key, mixed $value, array $attributes):
  This means that you can do things like create an `EditUserProfileDto` to store values from a form. As long as there is a public property on your component (e.g. `public EditUserProfileDto $editUserProfileDto;`) You can use `wire:model="editUserProfileDto.name"` and `wire:model="editUserProfileDto.email"` etc. on your input elements to fill the DTO values directly. You can then validate the DTO and persist data to your database using whatever pattern you like.
   
   
-  
+
  # more to come...
