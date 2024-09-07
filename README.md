@@ -1,18 +1,25 @@
 # laravel-simple-dto
 Composer Package for creating simple DTOs (Data Transfer Objects) in the Laravel framework
+  
+  
 
 ## Installation
 `composer require oilytortoise\laravel-simple-dto`
+  
+  
 
 ## Assets
 The package consists of two key classes:
  - `AbstractDto`
  - `AbstractDtoCollection`
-
+  
+  
  ## Usage
  DTOs are a handy data structure to help send data around your application, generate API payloads/responses, hydrate incoming request data etc.
 
  While all of this can be done with simple arrays, DTOs have the added benefit of being able to easily typecast values being stored, customize hydration logic, and add any functions for getting and setting values where necessary (however it is generally not advised to include business logic within a DTO).
+  
+  
 
 ### Creating a DTO
  A DTO class is very simple to create. Here is an example:
@@ -31,7 +38,7 @@ class UserDto extends AbstractDto
 
  And that's it!
 
- You can create a new instance of the DTO as follows:
+ You can create a new instance of the DTO as follows:  
  `$user = new UserDto(['name' => 'Oily Tortoise', 'email' => 'oily@tortoise.com']);`
 
  You can also store other DTOs as properties:
@@ -76,11 +83,14 @@ class UserDto extends AbstractDto
 
  The `AbstractDto` constructor will recursively construct any nested DTOs upon construction - provided the value passed in is an array.
  This can be very helpful, for instance when you are generating an API response, you can validate the data being returned by creating a DTO instance of the response. As long as the properties of the DTO are set correctly - it will ensure that required values are present. It will also set default values if they are missing.
+  
 
  ### DTO Collections
  Basically it's a collection of DTOs which can be accessed using any of Laravel's collection functions: [https://laravel.com/docs/11.x/collections#available-methods].
 
  More to be explained at a later date.
+  
+  
 
 ## Database JSON Casting
 Many relational database engines such as MySQL now support JSON column types. These can be very useful especially when combined with Laravel's casting functionality.
@@ -103,10 +113,14 @@ public function get(Model $model, string $key, mixed $value, array $attributes):
         return json_encode($dataArray, JSON_UNESCAPED_SLASHES);
     }
 ```
+  
+  
 
  ## Livewire
  Any class which extends `AbstractDto` is automatically available for use as Livewire component properties.
 
- This means that you can do things like create an `EditUserProfileDto` to store values from a form. As long as there is a public property on your component (e.g. `public EditUserProfileDto $editUserProfileDto;`) You can use `wire:model="editUserProfileDto.name"` and wire:model="editUserProfileDto.email" etc. on your input elements to fill the DTO values directly. You can then validate the DTO and persist data to your database using whatever pattern you like.
-
+ This means that you can do things like create an `EditUserProfileDto` to store values from a form. As long as there is a public property on your component (e.g. `public EditUserProfileDto $editUserProfileDto;`) You can use `wire:model="editUserProfileDto.name"` and `wire:model="editUserProfileDto.email"` etc. on your input elements to fill the DTO values directly. You can then validate the DTO and persist data to your database using whatever pattern you like.
+  
+  
+  
  # more to come...
