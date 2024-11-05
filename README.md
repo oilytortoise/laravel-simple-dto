@@ -1,10 +1,15 @@
 # laravel-simple-dto
 Composer Package for creating simple DTOs (Data Transfer Objects) in the Laravel framework
+Github: [https://github.com/oilytortoise/laravel-simple-dto]
+Packagist: [https://packagist.org/packages/oilytortoise/laravel-simple-dto]
   
-  
+## Changes
+### v1.0.2
+- Removed `implements Wireable` from `AbstractDto` to allow useage in back-end services without installing Livewire.
+    - Simply add `implements Wireable` to your DTOs in order to use them in Livewire components.
 
 ## Installation
-`composer require oilytortoise\laravel-simple-dto`
+`composer require oilytortoise/laravel-simple-dto`
   
   
 
@@ -90,7 +95,19 @@ class UserDto extends AbstractDto
  ### DTO Collections
  Basically it's a collection of DTOs which can be accessed using any of Laravel's collection functions: [https://laravel.com/docs/11.x/collections#available-methods].
 
- More to be explained at a later date.
+Instead of having an array of DTOs, you can create a DTO collection in which you can add functions to retrieve/query for deeply nested values.
+
+To create a DTO collection, simply create a class which extends `Oilytortoise\LaravelSimpleDto\DtoCollection` and add the class of the DTO the collection should include:
+  
+```
+use Oilytortoise\LaravelSimpleDto\DtoCollection;
+use App\Dtos\Users\UserConfigDto;
+
+class UserConfigDtoCollection extends DtoCollection
+{
+    protected string $dtoClass = UserConfigDto::class;
+}
+```
   
   
 
@@ -120,6 +137,7 @@ public function get(Model $model, string $key, mixed $value, array $attributes):
 
  ## Livewire
  Any class which extends `AbstractDto` is automatically available for use as Livewire component properties.
+ ** NOTE: as of v1.0.2 you must add `implements Wireable` manually to DTOs you wish to use in Livewire components. This was changed to allow usage in back-end services without installing Livewire unnecessarily. **
 
  This means that you can do things like create an `EditUserProfileDto` to store values from a form. As long as there is a public property on your component (e.g. `public EditUserProfileDto $editUserProfileDto;`) You can use `wire:model="editUserProfileDto.name"` and `wire:model="editUserProfileDto.email"` etc. on your input elements to fill the DTO values directly. You can then validate the DTO and persist data to your database using whatever pattern you like.
   
