@@ -2,7 +2,6 @@
 
 namespace Oilytortoise\LaravelSimpleDto;
 
-use Livewire\Wireable;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -12,7 +11,7 @@ use ReflectionProperty;
  *
  * @author Oilytortoise
  */
-abstract class AbstractDto implements Wireable
+abstract class AbstractDto
 {
     public function __construct(array $data = [])
     {
